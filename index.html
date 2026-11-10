@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>README Forge — GitHub Profile README Generator</title>
+  <meta name="description" content="Craft a polished GitHub profile README in minutes. Tech badges, live Markdown preview, stats widgets, AI-written bios, and one-click download." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236366f1'/%3E%3Cpath d='M13 10l-4 6 4 6M19 10l4 6-4 6' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script>
+    (function () {
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch (e) {
+        /* ignore */
+      }
+      try {
+        var saved = JSON.parse(localStorage.getItem('readme-forge:v1') || '{}');
+        var theme = saved && saved.ui && saved.ui.theme;
+        if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          boxShadow: {
+            glow: '0 0 60px -18px rgba(99, 102, 241, 0.65)',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="font-sans antialiased">
+  <a href="#profile-form" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white">Skip to the form</a>
+
+  <!-- Inline icon sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5"/><path d="m16 7 5 5-5 5"/><path d="M14 4l-4 16"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11 4.93"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07L13 19.07"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L3 8"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 .5C5.73.5.9 5.33.9 11.6c0 4.9 3.17 9.05 7.57 10.52.55.1.76-.24.76-.53v-1.9c-3.08.67-3.73-1.3-3.73-1.3-.5-1.28-1.23-1.62-1.23-1.62-1-.68.08-.67.08-.67 1.11.08 1.7 1.14 1.7 1.14.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.46-.28-5.05-1.23-5.05-5.48 0-1.21.43-2.2 1.14-2.98-.11-.28-.5-1.41.11-2.93 0 0 .93-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.52.22 2.65.11 2.93.71.78 1.14 1.77 1.14 2.98 0 4.26-2.6 5.19-5.07 5.47.4.35.76 1.03.76 2.08v3.08c0 .3.2.64.77.53a11.1 11.1 0 0 0 7.56-10.52C23.1 5.33 18.27.5 12 .5Z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A10.9 10.9 0 0 1 12 4c6.5 0 10 7 10 7a18.3 18.3 0 0 1-2.16 3.19"/><path d="M6.61 6.61A18.5 18.5 0 0 0 2 11s3.5 7 10 7a10.9 10.9 0 0 0 5.39-1.39"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="m2 2 20 20"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></symbol>
+    <symbol id="i-file-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m10 13-2 2 2 2"/><path d="m14 17 2-2-2-2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></symbol>
+  </svg>
+
+  <!-- Header -->
+  <header class="glass-head sticky top-0 z-40 border-b border-slate-800/70">
+    <div class="mx-auto flex h-16 max-w-[1600px] items-center gap-3 px-4 sm:px-6 lg:px-8">
+      <a href="#" class="group flex items-center gap-3" aria-label="README Forge home">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-glow transition-transform duration-300 group-hover:-rotate-6">
+          <svg class="h-5 w-5" aria-hidden="true"><use href="#i-logo"></use></svg>
+        </span>
+        <span class="leading-tight">
+          <span class="block text-sm font-bold tracking-tight text-slate-100">README Forge</span>
+          <span class="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:block">GitHub Profile Builder</span>
+        </span>
+      </a>
+
+      <div class="ml-auto flex items-center gap-1.5">
+        <span id="save-indicator" class="save-indicator mr-1 hidden sm:inline-flex">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Saved
+        </span>
+        <a href="#preview-panel" class="btn btn-ghost lg:hidden">
+          <svg class="h-4 w-4" aria-hidden="true"><use href="#i-eye"></use></svg>
+          <span class="hidden sm:inline">Preview</span>
+        </a>
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="hidden h-4 w-4 dark:block" aria-hidden="true"><use href="#i-sun"></use></svg>
+          <svg class="block h-4 w-4 dark:hidden" aria-hidden="true"><use href="#i-moon"></use></svg>
+        </button>
+        <button type="button" id="reset-btn" class="icon-btn" aria-label="Reset workspace" title="Reset workspace">
+          <svg class="h-4 w-4" aria-hidden="true"><use href="#i-reset"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-[1600px] px-4 pb-16 pt-7 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 xl:gap-8">
+      <!-- ============================================================ LEFT -->
+      <div class="lg:col-span-5 xl:col-span-4">
+        <div class="mb-5 animate-fade-up">
+          <p class="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-400">
+            <span class="h-px w-6 bg-indigo-500/60"></span>
+            Step 01 — Your details
+          </p>
+          <h1 class="text-[1.7rem] font-extrabold leading-tight tracking-tight text-slate-100 sm:text-3xl">
+            A profile that <span class="gradient-text">stands out</span>.
+          </h1>
+          <p class="mt-2 max-w-md text-[13px] leading-relaxed text-slate-400">
+            Add your story, stack, and links. The Markdown updates live on the right — copy it or download it when you're happy.
+          </p>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+            <span class="inline-flex items-center gap-1 rounded-full border border-slate-700/70 bg-slate-800/50 px-2.5 py-1 text-[10px] font-medium text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Live preview</span>
+            <span class="inline-flex items-center gap-1 rounded-full border border-slate-700/70 bg-slate-800/50 px-2.5 py-1 text-[10px] font-medium text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-indigo-400"></span>Auto-saved</span>
+            <span class="inline-flex items-center gap-1 rounded-full border border-slate-700/70 bg-slate-800/50 px-2.5 py-1 text-[10px] font-medium text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-violet-400"></span>AI bios</span>
+          </div>
+        </div>
+
+        <form id="profile-form" class="scroll-mt-24 space-y-3.5" autocomplete="off" novalidate>
+          <div class="flex items-center justify-between gap-3 px-1">
+            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Profile sections</p>
+            <button type="button" id="expand-all" class="hidden text-[11px] font-semibold text-indigo-400 underline decoration-dotted underline-offset-2 transition-colors hover:text-indigo-300">Expand all sections</button>
+          </div>
+
+          <!-- Personal details -->
+          <section class="panel animate-fade-up delay-1" data-collapse-section="personal">
+            <button type="button" class="section-head" data-collapse="personal" aria-expanded="true" aria-controls="section-body-personal">
+              <span class="section-icon">
+                <svg class="h-4 w-4" aria-hidden="true"><use href="#i-user"></use></svg>
+              </span>
+              <span class="min-w-0 text-left">
+                <span class="block text-[13px] font-semibold text-slate-100">Personal details</span>
+                <span class="block text-[11px] text-slate-500">Who you are and what you're building</span>
+              </span>
+              <span class="ml-auto flex items-center gap-2">
+                <span class="hidden text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:inline" data-collapse-label>Hide</span>
+                <svg class="chev h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </span>
+            </button>
+            <div class="rf-collapse" id="section-body-personal">
+              <div class="rf-collapse-inner">
+                <div class="space-y-4 px-4 pb-5 pt-1 sm:px-5">
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label class="field-label" for="personal-name">Full name</label>
+                      <input id="personal-name" class="field" type="text" data-bind="personal.name" placeholder="Ada Lovelace" />
+                    </div>
+                    <div>
+                      <label class="field-label" for="personal-role">Role / job title</label>
+                      <input id="personal-role" class="field" type="text" data-bind="personal.role" placeholder="Full-Stack Developer" />
+                    </div>
+                  </div>
+
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label class="field-label" for="personal-location">Location</label>
+                      <input id="personal-location" class="field" type="text" data-bind="personal.location" placeholder="Berlin, Germany" />
+                    </div>
+                    <div>
+                      <label class="field-label" for="personal-fun">Fun fact</label>
+                      <input id="personal-fun" class="field" type="text" data-bind="personal.funFact" placeholder="I automate everything" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="field-label">
+                      <label for="personal-bio">Bio / tagline</label>
+                      <span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-emerald-300">AI READY</span>
+                    </div>
+                    <textarea id="personal-bio" class="field" rows="3" data-bind="personal.bio" placeholder="I build fast, accessible products with a soft spot for clean APIs."></textarea>
+                    <div class="mt-2 flex flex-wrap items-center gap-2">
+                      <button type="button" id="ai-generate" class="btn btn-ai" aria-busy="false">
+                        <svg class="h-4 w-4" aria-hidden="true"><use href="#i-sparkles"></use></svg>
+                        Generate AI bio
+                      </button>
+                      <button type="button" id="ai-settings-btn" class="icon-btn !h-8 !w-8" aria-label="AI API settings" title="AI API settings">
+                        <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-settings"></use></svg>
+                      </button>
+                      <span class="text-[10.5px] text-slate-500">3 options · works with OpenAI, Groq, Ollama…</span>
+                    </div>
+                  </div>
+
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label class="field-label" for="personal-work">Currently working on</label>
+                      <input id="personal-work" class="field" type="text" data-bind="personal.currentWork" placeholder="A SaaS analytics dashboard" />
+                    </div>
+                    <div>
+                      <label class="field-label" for="personal-learning">Currently learning</label>
+                      <input id="personal-learning" class="field" type="text" data-bind="personal.learning" placeholder="Rust & distributed systems" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tech stack -->
+          <section class="panel animate-fade-up delay-2" data-collapse-section="tech">
+            <button type="button" class="section-head" data-collapse="tech" aria-expanded="true" aria-controls="section-body-tech">
+              <span class="section-icon">
+                <svg class="h-4 w-4" aria-hidden="true"><use href="#i-stack"></use></svg>
+              </span>
+              <span class="min-w-0 text-left">
+                <span class="flex items-center gap-2 text-[13px] font-semibold text-slate-100">
+                  Tech stack
+                  <span id="tech-count" class="section-pill hidden">0</span>
+                </span>
+                <span class="block text-[11px] text-slate-500">Rendered as Shields.io badges</span>
+              </span>
+              <span class="ml-auto flex items-center gap-2">
+                <span class="hidden text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:inline" data-collapse-label>Hide</span>
+                <svg class="chev h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </span>
+            </button>
+            <div class="rf-collapse" id="section-body-tech">
+              <div class="rf-collapse-inner">
+                <div class="space-y-4 px-4 pb-5 pt-1 sm:px-5">
+                  <div class="relative">
+                    <svg class="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500" aria-hidden="true"><use href="#i-search"></use></svg>
+                    <input id="tech-search" class="field !pl-9" type="search" placeholder="Filter technologies…" aria-label="Filter technologies" />
+                  </div>
+
+                  <div id="tech-groups" class="space-y-4"></div>
+
+                  <p id="no-tech-matches" class="hidden rounded-lg border border-dashed border-slate-700/70 px-3 py-2.5 text-center text-[11px] text-slate-500">
+                    No technologies match that search.
+                  </p>
+
+                  <div class="rounded-xl border border-dashed border-slate-700/70 bg-slate-900/20 p-3">
+                    <div class="flex items-center justify-between gap-2">
+                      <div>
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.09em] text-slate-400">Custom badges</p>
+                        <p class="mt-0.5 text-[10.5px] text-slate-500">Anything missing from the list?</p>
+                      </div>
+                      <button type="button" id="add-badge" class="btn btn-ghost !px-2.5 !py-1 !text-[11px]">
+                        <svg class="h-3 w-3" aria-hidden="true"><use href="#i-plus"></use></svg>
+                        Add
+                      </button>
+                    </div>
+                    <div id="custom-chips" class="mt-2.5 flex flex-wrap gap-1.5"></div>
+                    <p id="custom-empty" class="mt-1 text-[10.5px] text-slate-500">No custom badges yet.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Social links -->
+          <section class="panel animate-fade-up delay-3" data-collapse-section="social">
+            <button type="button" class="section-head" data-collapse="social" aria-expanded="true" aria-controls="section-body-social">
+              <span class="section-icon">
+                <svg class="h-4 w-4" aria-hidden="true"><use href="#i-link"></use></svg>
+              </span>
+              <span class="min-w-0 text-left">
+                <span class="flex items-center gap-2 text-[13px] font-semibold text-slate-100">
+                  Social &amp; portfolio
+                  <span id="social-count" class="section-pill hidden">0</span>
+                </span>
+                <span class="block text-[11px] text-slate-500">Paste a full URL or just your handle</span>
+              </span>
+              <span class="ml-auto flex items-center gap-2">
+                <span class="hidden text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:inline" data-collapse-label>Hide</span>
+                <svg class="chev h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </span>
+            </button>
+            <div class="rf-collapse" id="section-body-social">
+              <div class="rf-collapse-inner">
+                <div class="grid gap-4 px-4 pb-5 pt-1 sm:grid-cols-2 sm:px-5">
+                  <div>
+                    <label class="field-label" for="social-github">
+                      <span class="flex items-center gap-1.5"><svg class="h-3 w-3" aria-hidden="true"><use href="#i-github"></use></svg>GitHub</span>
+                      <span class="font-normal normal-case tracking-normal text-slate-600">required for widgets</span>
+                    </label>
+                    <input id="social-github" class="field" type="text" data-bind="social.github" placeholder="octocat" />
+                    <p class="field-hint" data-hint="github">github.com/your-handle</p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="social-linkedin">LinkedIn</label>
+                    <input id="social-linkedin" class="field" type="text" data-bind="social.linkedin" placeholder="in/your-handle" />
+                    <p class="field-hint" data-hint="linkedin">linkedin.com/in/your-handle</p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="social-twitter">Twitter / X</label>
+                    <input id="social-twitter" class="field" type="text" data-bind="social.twitter" placeholder="@yourhandle" />
+                    <p class="field-hint" data-hint="twitter">x.com/your-handle</p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="social-devto">Dev.to</label>
+                    <input id="social-devto" class="field" type="text" data-bind="social.devto" placeholder="yourhandle" />
+                    <p class="field-hint" data-hint="devto">dev.to/your-handle</p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="social-medium">Medium</label>
+                    <input id="social-medium" class="field" type="text" data-bind="social.medium" placeholder="@yourhandle" />
+                    <p class="field-hint" data-hint="medium">medium.com/@your-handle</p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="social-hashnode">Hashnode</label>
+                    <input id="social-hashnode" class="field" type="text" data-bind="social.hashnode" placeholder="@yourhandle" />
+                    <p class="field-hint" data-hint="hashnode">hashnode.com/@your-handle</p>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label class="field-label" for="social-portfolio">Portfolio website</label>
+                    <input id="social-portfolio" class="field" type="text" data-bind="social.portfolio" placeholder="yourname.dev" />
+                    <p class="field-hint" data-hint="portfolio">your-domain.dev</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Widgets -->
+          <section class="panel animate-fade-up delay-4" data-collapse-section="widgets">
+            <button type="button" class="section-head" data-collapse="widgets" aria-expanded="true" aria-controls="section-body-widgets">
+              <span class="section-icon">
+                <svg class="h-4 w-4" aria-hidden="true"><use href="#i-chart"></use></svg>
+              </span>
+              <span class="min-w-0 text-left">
+                <span class="flex items-center gap-2 text-[13px] font-semibold text-slate-100">
+                  GitHub widgets
+                  <span id="widget-count" class="section-pill">0</span>
+                </span>
+                <span class="block text-[11px] text-slate-500">Stats cards, streaks, trophies &amp; more</span>
+              </span>
+              <span class="ml-auto flex items-center gap-2">
+                <span class="hidden text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:inline" data-collapse-label>Hide</span>
+                <svg class="chev h-4 w-4 shrink-0" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </span>
+            </button>
+            <div class="rf-collapse" id="section-body-widgets">
+              <div class="rf-collapse-inner">
+                <div class="space-y-4 px-4 pb-5 pt-1 sm:px-5">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <label class="field-label !mb-0" for="widget-theme">Widget theme</label>
+                    <select id="widget-theme" class="field select-field !w-auto !py-1.5 !text-xs" data-bind="widgets.theme">
+                      <option value="tokyonight">Tokyo Night</option>
+                      <option value="radical">Radical</option>
+                      <option value="dracula">Dracula</option>
+                      <option value="dark">Dark</option>
+                      <option value="default">Default (light)</option>
+                    </select>
+                  </div>
+
+                  <div class="grid gap-2 sm:grid-cols-2">
+                    <div class="toggle-row">
+                      <div class="min-w-0">
+                        <p class="text-xs font-semibold text-slate-200">GitHub stats card</p>
+                        <p class="text-[10.5px] text-slate-500">Commits, PRs &amp; stars</p>
+                      </div>
+                      <button type="button" class="switch" role="switch" aria-checked="true" aria-label="Include GitHub stats card" data-toggle="widgets.stats"><span class="switch-thumb"></span></button>
+                    </div>
+                    <div class="toggle-row">
+                      <div class="min-w-0">
+                        <p class="text-xs font-semibold text-slate-200">Streak stats</p>
+                        <p class="text-[10.5px] text-slate-500">Current &amp; longest streak</p>
+                      </div>
+                      <button type="button" class="switch" role="switch" aria-checked="true" aria-label="Include streak stats" data-toggle="widgets.streak"><span class="switch-thumb"></span></button>
+                    </div>
+                    <div class="toggle-row">
+                      <div class="min-w-0">
+                        <p class="text-xs font-semibold text-slate-200">Top languages</p>
+                        <p class="text-[10.5px] text-slate-500">Most-used language card</p>
+                      </div>
+                      <button type="button" class="switch" role="switch" aria-checked="true" aria-label="Include top languages card" data-toggle="widgets.topLangs"><span class="switch-thumb"></span></button>
+                    </div>
+                    <div class="toggle-row">
+                      <div class="min-w-0">
+                        <p class="text-xs font-semibold text-slate-200">Profile views</p>
+                        <p class="text-[10.5px] text-slate-500">Visitor counter badge</p>
+                      </div>
+                      <button type="button" class="switch" role="switch" aria-checked="true" aria-label="Include profile views counter" data-toggle="widgets.views"><span class="switch-thumb"></span></button>
+                    </div>
+                    <div class="toggle-row">
+                      <div class="min-w-0">
+                        <p class="text-xs font-semibold text-slate-200">Trophies</p>
+                        <p class="text-[10.5px] text-slate-500">Achievement showcase</p>
+                      </div>
+                      <button type="button" class="switch" role="switch" aria-checked="false" aria-label="Include GitHub trophies" data-toggle="widgets.trophies"><span class="switch-thumb"></span></button>
+                    </div>
+                    <div class="toggle-row">
+                      <div class="min-w-0">
+                        <p class="text-xs font-semibold text-slate-200">Activity graph</p>
+                        <p class="text-[10.5px] text-slate-500">Contribution timeline</p>
+                      </div>
+                      <button type="button" class="switch" role="switch" aria-checked="false" aria-label="Include activity graph" data-toggle="widgets.activity"><span class="switch-thumb"></span></button>
+                    </div>
+                  </div>
+
+                  <p id="stats-username-warning" class="status-banner hidden flex items-start gap-2 px-3 py-2.5 text-[11px]">
+                    <svg class="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true"><use href="#i-alert"></use></svg>
+                    <span>Widgets are generated from your GitHub username. <button type="button" class="font-semibold underline decoration-dotted underline-offset-2" data-action="focus-github">Add it here</button> to include them.</span>
+                  </p>
+
+                  <p class="text-[10.5px] leading-relaxed text-slate-500">
+                    Widgets are served by community services (github-readme-stats, streak-stats, komarev). They may take a moment to load on GitHub.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="panel p-4">
+            <p class="flex items-start gap-2 text-[11px] leading-relaxed text-slate-500">
+              <svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-400" aria-hidden="true"><use href="#i-lock"></use></svg>
+              <span>Everything is stored locally in this browser. No account, no server — your AI key (if added) goes straight to your chosen provider.</span>
+            </p>
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              <button type="button" id="load-sample" class="btn btn-ghost !px-2.5 !py-1.5 !text-[11px]">
+                <svg class="h-3 w-3" aria-hidden="true"><use href="#i-star"></use></svg>
+                Load sample
+              </button>
+              <button type="button" id="export-json" class="btn btn-ghost !px-2.5 !py-1.5 !text-[11px]">
+                <svg class="h-3 w-3" aria-hidden="true"><use href="#i-download"></use></svg>
+                Export JSON
+              </button>
+              <button type="button" id="import-trigger" class="btn btn-ghost !px-2.5 !py-1.5 !text-[11px]">
+                <svg class="h-3 w-3" aria-hidden="true"><use href="#i-upload"></use></svg>
+                Import JSON
+              </button>
+              <input id="import-json" type="file" accept="application/json,.json" class="hidden" />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- ============================================================ RIGHT -->
+      <div id="preview-panel" class="scroll-mt-24 lg:col-span-7 xl:col-span-8">
+        <div class="lg:sticky lg:top-[88px]">
+          <div class="preview-window flex max-h-[85vh] flex-col overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900/60 shadow-2xl shadow-slate-950/50 lg:max-h-none lg:h-[calc(100vh-7.5rem)]">
+            <!-- Window chrome -->
+            <div class="flex items-center gap-2.5 border-b border-slate-700/60 bg-slate-900/80 px-4 py-3">
+              <div class="flex items-center gap-1.5" aria-hidden="true">
+                <span class="window-dot bg-rose-500/80"></span>
+                <span class="window-dot bg-amber-400/80"></span>
+                <span class="window-dot bg-emerald-400/80"></span>
+              </div>
+              <span class="ml-1 font-mono text-[11px] text-slate-400">README.md</span>
+              <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-emerald-300">
+                <span class="relative flex h-1.5 w-1.5">
+                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span>
+                  <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                </span>
+                Live
+              </span>
+              <span class="ml-auto hidden items-center gap-1.5 text-[10px] text-slate-500 sm:flex">
+                <svg class="h-3 w-3" aria-hidden="true"><use href="#i-file-code"></use></svg>
+                Markdown → GitHub-ready
+              </span>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="flex flex-wrap items-center gap-2 border-b border-slate-700/60 bg-slate-900/60 px-3 py-2.5">
+              <div role="tablist" aria-label="README output view" class="flex items-center gap-1">
+                <button type="button" id="tab-preview" class="tab is-active" role="tab" data-tab="preview" aria-selected="true" aria-controls="panel-preview">
+                  <span class="tab-dot"></span>
+                  Preview
+                </button>
+                <button type="button" id="tab-markdown" class="tab" role="tab" data-tab="markdown" aria-selected="false" aria-controls="panel-markdown" tabindex="-1">
+                  <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-file-code"></use></svg>
+                  Markdown
+                  <span id="tab-md-size" class="rounded border border-slate-700/80 bg-slate-950/50 px-1 py-0.5 font-mono text-[9px] font-medium text-slate-500">0 B</span>
+                </button>
+              </div>
+
+              <div class="ml-auto flex items-center gap-1.5">
+                <a href="#profile-form" class="btn btn-ghost lg:hidden" title="Back to the form">
+                  <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-user"></use></svg>
+                  <span>Edit</span>
+                </a>
+                <button type="button" id="copy-btn" class="btn btn-primary" disabled>
+                  <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-copy"></use></svg>
+                  <span id="copy-label">Copy Markdown</span>
+                </button>
+                <button type="button" id="download-btn" class="btn btn-ghost" disabled>
+                  <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-download"></use></svg>
+                  <span class="hidden sm:inline">Download</span>
+                  <span class="sm:hidden">.md</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Preview panel -->
+            <div id="panel-preview" role="tabpanel" aria-labelledby="tab-preview" class="preview-scroll preview-frame min-h-0 flex-1 overflow-y-auto">
+              <div id="preview-empty" class="flex min-h-[26rem] flex-col items-center justify-center px-6 py-12 text-center lg:h-full">
+                <div class="empty-graphic mb-6" aria-hidden="true">
+                  <div class="mb-3 flex items-center gap-1.5">
+                    <span class="h-1.5 w-1.5 rounded-full bg-slate-500/70"></span>
+                    <span class="h-1.5 w-1.5 rounded-full bg-slate-500/50"></span>
+                    <span class="h-1.5 w-1.5 rounded-full bg-slate-500/30"></span>
+                    <span class="ml-auto h-1.5 w-10 rounded-full bg-slate-600/40"></span>
+                  </div>
+                  <div class="mb-3 flex items-center gap-2">
+                    <span class="h-7 w-7 rounded-full bg-gradient-to-br from-indigo-400/60 to-emerald-400/50"></span>
+                    <div class="flex-1 space-y-1.5">
+                      <div class="skeleton-line w-2/3"></div>
+                      <div class="skeleton-line w-1/2"></div>
+                    </div>
+                  </div>
+                  <div class="mb-2 flex gap-1">
+                    <span class="h-4 w-14 rounded bg-indigo-500/25"></span>
+                    <span class="h-4 w-12 rounded bg-emerald-500/20"></span>
+                    <span class="h-4 w-16 rounded bg-slate-600/30"></span>
+                  </div>
+                  <div class="space-y-1.5">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line w-11/12"></div>
+                    <div class="skeleton-line w-3/4"></div>
+                  </div>
+                </div>
+                <span class="mb-2 inline-grid h-9 w-9 place-items-center rounded-xl border border-indigo-400/25 bg-indigo-500/10 text-indigo-300">
+                  <svg class="h-4 w-4" aria-hidden="true"><use href="#i-sparkles"></use></svg>
+                </span>
+                <h2 class="text-sm font-semibold text-slate-200">Your README starts here</h2>
+                <p class="mt-1 max-w-xs text-[11.5px] leading-relaxed text-slate-500">
+                  Fill in the form to see your GitHub profile README come to life, or explore with sample data.
+                </p>
+                <button type="button" class="btn btn-ghost mt-4" data-action="load-sample">
+                  <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-star"></use></svg>
+                  Load sample profile
+                </button>
+              </div>
+
+              <div id="preview-content" class="hidden px-4 py-6 sm:px-8 sm:py-8">
+                <div id="preview-warning" class="status-banner mb-6 hidden flex items-start gap-2 px-3 py-2.5 text-[11px]">
+                  <svg class="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true"><use href="#i-alert"></use></svg>
+                  <span class="flex-1">GitHub widgets need a username, so they are hidden from this output. <button type="button" class="font-semibold underline decoration-dotted underline-offset-2" data-action="focus-github">Add your username</button>.</span>
+                </div>
+                <article id="markdown-preview" class="markdown-body"></article>
+              </div>
+            </div>
+
+            <!-- Raw Markdown panel -->
+            <div id="panel-markdown" role="tabpanel" aria-labelledby="tab-markdown" class="code-scroll hidden flex min-h-0 flex-1 flex-col">
+              <div class="relative min-h-0 flex-1 overflow-auto">
+                <pre class="code-block"><code id="markdown-code"></code></pre>
+                <div id="code-empty" class="absolute inset-0 hidden flex items-center justify-center p-8 text-center">
+                  <div>
+                    <svg class="mx-auto mb-3 h-8 w-8 text-slate-600" aria-hidden="true"><use href="#i-file-code"></use></svg>
+                    <p class="text-xs font-medium text-slate-400">Your Markdown will appear here</p>
+                    <p class="mt-1 text-[11px] text-slate-600">Every field you fill in compiles instantly.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 border-t border-slate-800 bg-slate-900/60 px-4 py-2">
+                <span id="md-stats" class="font-mono text-[10px] text-slate-500">0 lines · 0 words · 0 B</span>
+                <span class="ml-auto inline-flex items-center gap-1 rounded border border-slate-700/70 bg-slate-950/40 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-slate-500">
+                  GFM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 px-1 text-[10.5px] text-slate-500">
+            <span class="inline-flex items-center gap-1.5"><svg class="h-3 w-3 text-emerald-400/80" aria-hidden="true"><use href="#i-lock"></use></svg>Saved in this browser only</span>
+            <span class="hidden items-center gap-1.5 sm:inline-flex"><svg class="h-3 w-3" aria-hidden="true"><use href="#i-info"></use></svg>Preview approximates GitHub's renderer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mx-auto max-w-[1600px] px-4 pb-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center justify-between gap-2 border-t border-slate-800/60 pt-5 text-[10.5px] text-slate-500 sm:flex-row">
+      <p class="flex items-center gap-1.5">
+        <svg class="h-3.5 w-3.5 text-indigo-400" aria-hidden="true"><use href="#i-logo"></use></svg>
+        <span>README Forge — a local-first profile builder.</span>
+      </p>
+      <p>No tracking · No sign-up · <span id="year">2026</span></p>
+    </div>
+  </footer>
+
+  <!-- ================================================================ DIALOGS -->
+  <dialog id="dialog-bios" class="modal" aria-labelledby="bio-dialog-title">
+    <div class="modal-card">
+      <div class="modal-head">
+        <span class="section-icon">
+          <svg class="h-4 w-4" aria-hidden="true"><use href="#i-sparkles"></use></svg>
+        </span>
+        <div class="min-w-0 flex-1">
+          <h2 id="bio-dialog-title" class="text-sm font-semibold text-slate-100">AI bio drafts</h2>
+          <p class="mt-0.5 text-[11px] leading-relaxed text-slate-500">Three angles on your story. Pick one and keep editing any time.</p>
+        </div>
+        <button type="button" class="icon-btn !h-8 !w-8" data-close-dialog="dialog-bios" aria-label="Close dialog">
+          <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <div id="bio-results" class="modal-body space-y-3" aria-live="polite"></div>
+      <div class="modal-foot">
+        <span id="bio-source" class="text-[10.5px] text-slate-500">Ready</span>
+        <div class="flex items-center gap-1.5">
+          <button type="button" id="bio-settings" class="btn btn-ghost !px-2.5 !py-1.5 !text-[11px]">
+            <svg class="h-3 w-3" aria-hidden="true"><use href="#i-settings"></use></svg>
+            API settings
+          </button>
+          <button type="button" id="bio-regenerate" class="btn btn-primary !px-2.5 !py-1.5 !text-[11px]">
+            <svg class="h-3 w-3" aria-hidden="true"><use href="#i-reset"></use></svg>
+            Regenerate
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-ai-settings" class="modal" aria-labelledby="ai-settings-title">
+    <form id="ai-settings-form" novalidate>
+      <div class="modal-card">
+        <div class="modal-head">
+          <span class="section-icon">
+            <svg class="h-4 w-4" aria-hidden="true"><use href="#i-settings"></use></svg>
+          </span>
+          <div class="min-w-0 flex-1">
+            <h2 id="ai-settings-title" class="text-sm font-semibold text-slate-100">AI settings</h2>
+            <p class="mt-0.5 text-[11px] leading-relaxed text-slate-500">Bring your own OpenAI-compatible endpoint. No account with us required.</p>
+          </div>
+          <button type="button" class="icon-btn !h-8 !w-8" data-close-dialog="dialog-ai-settings" aria-label="Close dialog">
+            <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+        <div class="modal-body space-y-4">
+          <div>
+            <label class="field-label" for="ai-preset">Provider preset</label>
+            <select id="ai-preset" class="field select-field">
+              <option value="openai">OpenAI</option>
+              <option value="openrouter">OpenRouter</option>
+              <option value="groq">Groq</option>
+              <option value="ollama">Ollama (local)</option>
+              <option value="custom">Custom endpoint</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="ai-endpoint">Chat completions endpoint</label>
+            <input id="ai-endpoint" class="field font-mono !text-[11.5px]" type="text" spellcheck="false" placeholder="https://api.openai.com/v1/chat/completions" />
+          </div>
+          <div>
+            <label class="field-label" for="ai-model">Model</label>
+            <input id="ai-model" class="field font-mono !text-[11.5px]" type="text" spellcheck="false" placeholder="gpt-4o-mini" />
+          </div>
+          <div>
+            <label class="field-label" for="ai-key">API key</label>
+            <div class="relative">
+              <input id="ai-key" class="field !pr-11 font-mono !text-[11.5px]" type="password" spellcheck="false" autocomplete="off" placeholder="sk-..." />
+              <button type="button" id="ai-key-toggle" class="absolute right-1 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-md text-slate-500 hover:bg-slate-800 hover:text-slate-200" aria-label="Show API key">
+                <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-eye"></use></svg>
+              </button>
+            </div>
+            <p id="ai-mode-note" class="field-hint">Requests are sent directly from your browser to this endpoint.</p>
+          </div>
+          <div class="rounded-lg border border-amber-500/25 bg-amber-500/[0.06] p-2.5 text-[10.5px] leading-relaxed text-amber-300/90">
+            <span class="font-semibold">Heads up:</span> the key is saved in this browser's localStorage and sent only to the endpoint above. Only use keys you are comfortable storing locally.
+            <button type="button" id="ai-clear-key" class="mt-1 block font-semibold underline decoration-dotted underline-offset-2">Clear stored key</button>
+          </div>
+          <p class="text-[10.5px] leading-relaxed text-slate-500">
+            Works with any OpenAI-compatible chat API, including OpenRouter, Groq, LM Studio, and Ollama. Some local servers need CORS origins enabled.
+          </p>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" data-close-dialog="dialog-ai-settings">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-check"></use></svg>
+            Save settings
+          </button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dialog-badge" class="modal" aria-labelledby="badge-dialog-title">
+    <form id="badge-form" novalidate>
+      <div class="modal-card">
+        <div class="modal-head">
+          <span class="section-icon">
+            <svg class="h-4 w-4" aria-hidden="true"><use href="#i-plus"></use></svg>
+          </span>
+          <div class="min-w-0 flex-1">
+            <h2 id="badge-dialog-title" class="text-sm font-semibold text-slate-100">Add a custom badge</h2>
+            <p class="mt-0.5 text-[11px] text-slate-500">Any technology, tool, or inside joke — turned into a Shields.io badge.</p>
+          </div>
+          <button type="button" class="icon-btn !h-8 !w-8" data-close-dialog="dialog-badge" aria-label="Close dialog">
+            <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+        <div class="modal-body space-y-4">
+          <div class="grid gap-4 sm:grid-cols-[1fr_auto]">
+            <div>
+              <label class="field-label" for="badge-label">Badge label</label>
+              <input id="badge-label" class="field" type="text" maxlength="40" required placeholder="Blender" />
+            </div>
+            <div>
+              <label class="field-label" for="badge-color">Colour</label>
+              <div class="flex items-center gap-2 rounded-lg border border-slate-700/70 bg-slate-900/40 py-1 pl-1 pr-3">
+                <input id="badge-color" type="color" value="#6366F1" class="h-8 w-10 cursor-pointer rounded-md border-0 bg-transparent p-0" aria-label="Badge colour" />
+                <span id="badge-color-value" class="font-mono text-[11px] text-slate-400">#6366F1</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="field-label" for="badge-logo">Logo slug <span class="font-normal normal-case tracking-normal text-slate-600">optional</span></label>
+            <input id="badge-logo" class="field font-mono !text-[11.5px]" type="text" pattern="[A-Za-z0-9]*" spellcheck="false" placeholder="blender" />
+            <p id="badge-logo-hint" class="field-hint">Optional — use a Simple Icons slug (e.g. laravel)</p>
+          </div>
+          <div>
+            <span class="field-label">Preview</span>
+            <div class="flex min-h-[4.5rem] items-center justify-center rounded-xl border border-dashed border-slate-700/70 bg-slate-950/40 p-3">
+              <img id="badge-preview" alt="Badge preview" />
+            </div>
+            <p class="field-hint">Find logo slugs at <a href="https://simpleicons.org" target="_blank" rel="noreferrer" class="text-indigo-400 underline decoration-dotted underline-offset-2">simpleicons.org</a>.</p>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" data-close-dialog="dialog-badge">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-plus"></use></svg>
+            Add badge
+          </button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dialog-confirm" class="modal modal-sm" aria-labelledby="confirm-title">
+    <div class="modal-card">
+      <div class="modal-head">
+        <span class="grid h-9 w-9 flex-none place-items-center rounded-xl border border-rose-400/25 bg-rose-500/10 text-rose-300">
+          <svg class="h-4 w-4" aria-hidden="true"><use href="#i-alert"></use></svg>
+        </span>
+        <div class="min-w-0 flex-1">
+          <h2 id="confirm-title" class="text-sm font-semibold text-slate-100">Are you sure?</h2>
+          <p id="confirm-message" class="mt-1 text-[11.5px] leading-relaxed text-slate-500"></p>
+        </div>
+      </div>
+      <div class="modal-foot justify-end">
+        <button type="button" id="confirm-cancel" class="btn btn-ghost">Cancel</button>
+        <button type="button" id="confirm-ok" class="btn btn-danger">Confirm</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+  <!-- App modules -->
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/urls.js"></script>
+  <script src="assets/js/tech-catalog.js"></script>
+  <script src="assets/js/markdown.js"></script>
+  <script src="assets/js/tech.js"></script>
+  <script src="assets/js/preview.js"></script>
+  <script src="assets/js/ai.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
