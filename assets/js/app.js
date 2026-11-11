@@ -117,6 +117,7 @@
       devto: 'dev.to/your-handle',
       medium: 'medium.com/@your-handle',
       hashnode: 'hashnode.com/@your-handle',
+      email: 'you@example.com',
     };
     const links = RF.urls.socialLinks(state.social);
     const byKey = new Map(links.map((link) => [link.key, link]));
@@ -130,6 +131,7 @@
         connected += 1;
         let label = link.url.replace(/^https?:\/\//, '').replace(/^www\./, '');
         if (key === 'portfolio') label = RF.urls.domain(link.url);
+        if (key === 'email') label = link.url.replace(/^mailto:/, '');
         hint.textContent = label;
         hint.title = link.url;
         hint.classList.add('is-valid');

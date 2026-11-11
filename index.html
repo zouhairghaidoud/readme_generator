@@ -16,7 +16,7 @@
         /* ignore */
       }
       try {
-        var saved = JSON.parse(localStorage.getItem('readme-forge:v1') || '{}');
+        var saved = JSON.parse(localStorage.getItem('readme-forge:v2') || '{}');
         var theme = saved && saved.ui && saved.ui.theme;
         if (theme !== 'light' && theme !== 'dark') theme = 'dark';
         document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -214,6 +214,12 @@
                       <input id="personal-learning" class="field" type="text" data-bind="personal.learning" placeholder="Rust & distributed systems" />
                     </div>
                   </div>
+
+                  <div>
+                    <label class="field-label" for="personal-ask">Ask me about</label>
+                    <input id="personal-ask" class="field" type="text" data-bind="personal.askAbout" placeholder="PHP, Laravel, JavaScript" />
+                    <p class="field-hint">Comma-separated topics for the “Ask me about” line.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -323,6 +329,11 @@
                     <label class="field-label" for="social-hashnode">Hashnode</label>
                     <input id="social-hashnode" class="field" type="text" data-bind="social.hashnode" placeholder="@yourhandle" />
                     <p class="field-hint" data-hint="hashnode">hashnode.com/@your-handle</p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="social-email">Email</label>
+                    <input id="social-email" class="field" type="email" data-bind="social.email" placeholder="you@example.com" />
+                    <p class="field-hint" data-hint="email">you@example.com</p>
                   </div>
                   <div class="sm:col-span-2">
                     <label class="field-label" for="social-portfolio">Portfolio website</label>

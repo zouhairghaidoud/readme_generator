@@ -55,6 +55,11 @@
     return handle.replace(/[^A-Za-z0-9_\-.]/g, '');
   }
 
+  function email(raw) {
+    const value = String(raw ?? '').trim().replace(/^mailto:/i, '');
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? value : '';
+  }
+
   function portfolio(raw) {
     const value = String(raw ?? '').trim();
     if (!value) return '';
@@ -80,6 +85,7 @@
     const dt = devto(social.devto);
     const md = medium(social.medium);
     const hn = hashnode(social.hashnode);
+    const em = email(social.email);
     const web = portfolio(social.portfolio);
 
     if (gh) {
@@ -142,6 +148,16 @@
         url: `https://hashnode.com/@${hn}`,
       });
     }
+    if (em) {
+      links.push({
+        key: 'email',
+        label: 'Email',
+        alt: 'Email',
+        color: 'D14836',
+        logo: 'gmail',
+        url: `mailto:${em}`,
+      });
+    }
     if (web) {
       links.push({
         key: 'portfolio',
@@ -162,6 +178,7 @@
     devto,
     medium,
     hashnode,
+    email,
     portfolio,
     domain,
     socialLinks,

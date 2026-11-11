@@ -59,6 +59,7 @@
         { id: 'bun', label: 'Bun', color: '000000', logo: 'bun' },
         { id: 'tailwindcss', label: 'Tailwind CSS', color: '06B6D4', logo: 'tailwindcss' },
         { id: 'bootstrap', label: 'Bootstrap', color: '7952B3', logo: 'bootstrap' },
+        { id: 'chartjs', label: 'Chart.js', color: 'FF6384', logo: 'chartdotjs' },
         { id: 'sass', label: 'Sass', color: 'CC6699', logo: 'sass' },
         { id: 'jquery', label: 'jQuery', color: '0769AD', logo: 'jquery' },
         { id: 'rubyonrails', label: 'Ruby on Rails', color: 'CC0000', logo: 'rubyonrails' },

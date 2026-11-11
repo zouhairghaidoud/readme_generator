@@ -119,9 +119,16 @@
   function hasContent(state) {
     const p = state.personal || {};
     const social = state.social || {};
-    const hasPersonal = ['name', 'role', 'location', 'bio', 'currentWork', 'learning', 'funFact'].some(
-      (key) => String(p[key] || '').trim()
-    );
+    const hasPersonal = [
+      'name',
+      'role',
+      'location',
+      'bio',
+      'currentWork',
+      'learning',
+      'funFact',
+      'askAbout',
+    ].some((key) => String(p[key] || '').trim());
     const hasSocial = Object.values(social).some((value) => String(value || '').trim());
     const hasTech =
       RF.techCatalog.categories.some((category) => (state.tech[category.id] || []).length > 0) ||
@@ -193,14 +200,21 @@
     if (oneLine(p.learning)) {
       about.push(`- 🌱 I'm currently learning **${mdText(oneLine(p.learning))}**`);
     }
-    const skills = topSkills(state, 3);
-    if (skills.length) {
-      about.push(`- 💬 Ask me about **${mdText(listSentence(skills))}**`);
+    if (oneLine(p.askAbout)) {
+      about.push(`- 💬 Ask me about **${mdText(oneLine(p.askAbout))}**`);
+    } else {
+      const skills = topSkills(state, 3);
+      if (skills.length) {
+        about.push(`- 💬 Ask me about **${mdText(listSentence(skills))}**`);
+      }
     }
     if (oneLine(p.funFact)) {
       about.push(`- ⚡ Fun fact: ${mdText(oneLine(p.funFact))}`);
     }
-    if (oneLine(state.social.portfolio)) {
+    const email = RF.urls.email((state.social || {}).email);
+    if (email) {
+      about.push(`- 📫 How to reach me **[${mdText(email)}](mailto:${esc(email)})**`);
+    } else if (oneLine(state.social.portfolio)) {
       const web = RF.urls.portfolio(state.social.portfolio);
       about.push(`- 🌐 Explore my work at **[${mdText(RF.urls.domain(web))}](${esc(web)})**`);
     } else if (username) {

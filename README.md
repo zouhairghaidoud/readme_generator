@@ -15,15 +15,15 @@ No account, no backend, no build step. Everything runs in your browser.
 
 - **Live dual view** — sanitized GitHub-style preview and raw Markdown, side by side with your form on desktop.
 - **Guided form** — collapsible sections for personal details, tech stack, social links, and analytics widgets.
-- **137 tech badges** — curated catalogue across languages, frameworks, databases, DevOps/cloud, and tools, plus unlimited custom Shields.io badges.
-- **Social badges** — GitHub, LinkedIn, X/Twitter, portfolio, Dev.to, Medium, and Hashnode, with automatic handle-to-URL normalization.
+- **138 tech badges** — curated catalogue across languages, frameworks, databases, DevOps/cloud, and tools, plus unlimited custom Shields.io badges.
+- **Social badges** — GitHub, LinkedIn, X/Twitter, portfolio, Dev.to, Medium, Hashnode, and email, with automatic handle-to-URL normalization.
 - **GitHub widgets** — stats, streak, top languages, profile views, trophies, and contribution activity graph.
 - **AI bio generator** — three distinct drafts (Professional, Creative, Concise) through any OpenAI-compatible API, with an offline template fallback.
 - **Copy & download** — one-click clipboard copy with "Copied!" feedback, or download `README.md` directly.
 - **Light / dark themes** — slate + indigo/emerald dark palette, with a full light theme.
-- **Auto-save** — every field, badge, widget, and preference is persisted to `localStorage`.
+- **Auto-save** — every field, badge, widget, and preference is persisted to `localStorage` under `readme-forge:v2`.
 - **Import / export** — back up your profile as JSON and restore it later.
-- **Sample profile** — load a complete example in one click to explore the app.
+- **Pre-filled defaults** — a real profile (Zouhair GHAIDOUD) ships as the first-load state. **Reset** clears every field, while **Load sample profile** loads a separate demo profile.
 
 ## Quick start
 
@@ -46,9 +46,9 @@ There is nothing to install and nothing to build.
 
 ## Usage
 
-1. **Personal details** — name, role, location, tagline, current work, learning goals, and a fun fact.
+1. **Personal details** — name, role, location, tagline, current work, learning goals, "ask me about", and a fun fact.
 2. **Tech stack** — search or browse the catalogue and click chips to toggle badges. Use **Add badge** for anything not in the catalogue.
-3. **Social links** — paste a full URL or just a handle; labels and badge links are generated for you.
+3. **Social links** — paste a full URL or just a handle; labels and badge links are generated for you. An email address produces both a `mailto:` badge and a contact line in the README.
 4. **Widgets** — enable the GitHub cards you want. Widgets require a GitHub username and are omitted without one.
 5. **AI bio** *(optional)* — open **AI settings**, pick a provider, and generate. You can insert any draft into the Bio field.
 6. **Export** — copy the Markdown or download `README.md`, then paste it into a repository named exactly like your GitHub username.
@@ -120,9 +120,9 @@ Scripts are classic IIFEs attached to a single `window.RF` namespace, loaded in 
 
 ```json
 {
-  "personal": { "name": "", "role": "", "location": "", "bio": "", "currentWork": "", "learning": "", "funFact": "" },
+  "personal": { "name": "", "role": "", "location": "", "bio": "", "currentWork": "", "learning": "", "funFact": "", "askAbout": "" },
   "tech": { "languages": [], "frameworks": [], "databases": [], "devops": [], "tools": [], "custom": [] },
-  "social": { "github": "", "linkedin": "", "twitter": "", "portfolio": "", "devto": "", "medium": "", "hashnode": "" },
+  "social": { "github": "", "linkedin": "", "twitter": "", "portfolio": "", "devto": "", "medium": "", "hashnode": "", "email": "" },
   "widgets": { "stats": true, "streak": true, "topLangs": true, "views": true, "trophies": false, "activity": false },
   "ui": { "theme": "dark", "collapsed": {} }
 }

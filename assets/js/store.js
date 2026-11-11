@@ -3,7 +3,7 @@
   'use strict';
 
   const RF = (global.RF = global.RF || {});
-  const STORAGE_KEY = 'readme-forge:v1';
+  const STORAGE_KEY = 'readme-forge:v2';
 
   const SAMPLE = {
     personal: {
@@ -14,6 +14,7 @@
       currentWork: 'a SaaS analytics platform built with Laravel and Vue',
       learning: 'Rust and event-driven architecture',
       funFact: 'I automate everything — including my morning coffee machine',
+      askAbout: '',
     },
     social: {
       github: 'alexmoreau',
@@ -23,6 +24,7 @@
       devto: 'alexmoreau',
       medium: '',
       hashnode: '',
+      email: '',
     },
     tech: {
       languages: ['javascript', 'typescript', 'php', 'python'],
@@ -48,9 +50,56 @@
     },
   };
 
-  function defaults() {
+  /* Pre-filled profile. Shown on first load and after importing nothing. */
+  const PROFILE = {
+    version: 2,
+    personal: {
+      name: 'Zouhair GHAIDOUD',
+      role: 'Web Developer',
+      location: 'Morocco',
+      bio: 'A passionate web developer from Morocco.',
+      currentWork: '',
+      learning: '',
+      funFact: '',
+      askAbout: 'PHP, Laravel, JavaScript',
+    },
+    social: {
+      github: 'zouhairghaidoud',
+      linkedin: 'zouhair-ghaidoud',
+      twitter: '',
+      portfolio: '',
+      devto: 'zouhairghaidoud',
+      medium: '',
+      hashnode: '',
+      email: 'zouhairghaidoud185@gmail.com',
+    },
+    tech: {
+      languages: ['javascript', 'php', 'html5', 'css3', 'dart'],
+      frameworks: ['laravel', 'vue', 'tailwindcss', 'bootstrap', 'flutter', 'chartjs'],
+      databases: ['mysql', 'postgresql', 'sqlite'],
+      devops: [],
+      tools: ['git', 'postman'],
+      custom: [],
+    },
+    widgets: {
+      theme: 'tokyonight',
+      stats: true,
+      streak: true,
+      topLangs: true,
+      views: true,
+      trophies: false,
+      activity: false,
+    },
+    ui: {
+      tab: 'preview',
+      theme: null,
+      collapsed: {},
+    },
+  };
+
+  function emptyState() {
     return {
-      version: 1,
+      version: 2,
       personal: {
         name: '',
         role: '',
@@ -59,6 +108,7 @@
         currentWork: '',
         learning: '',
         funFact: '',
+        askAbout: '',
       },
       social: {
         github: '',
@@ -68,6 +118,7 @@
         devto: '',
         medium: '',
         hashnode: '',
+        email: '',
       },
       tech: {
         languages: [],
@@ -92,6 +143,10 @@
         collapsed: {},
       },
     };
+  }
+
+  function defaults() {
+    return JSON.parse(JSON.stringify(PROFILE));
   }
 
   const isPlainObject = (value) =>
@@ -120,12 +175,12 @@
     if (!state.widgets) state.widgets = {};
     if (!state.ui) state.ui = {};
 
-    const personalKeys = ['name', 'role', 'location', 'bio', 'currentWork', 'learning', 'funFact'];
+    const personalKeys = ['name', 'role', 'location', 'bio', 'currentWork', 'learning', 'funFact', 'askAbout'];
     personalKeys.forEach((key) => {
       state.personal[key] =
         typeof state.personal[key] === 'string' ? state.personal[key].slice(0, 1200) : '';
     });
-    const socialKeys = ['github', 'linkedin', 'twitter', 'portfolio', 'devto', 'medium', 'hashnode'];
+    const socialKeys = ['github', 'linkedin', 'twitter', 'portfolio', 'devto', 'medium', 'hashnode', 'email'];
     socialKeys.forEach((key) => {
       state.social[key] = typeof state.social[key] === 'string' ? state.social[key].slice(0, 300) : '';
     });
@@ -206,9 +261,10 @@
       saveNow();
       return state;
     },
+    empty: emptyState,
     reset() {
       const theme = state.ui && state.ui.theme;
-      state = defaults();
+      state = emptyState();
       state.ui.theme = theme;
       saveNow();
       return state;
