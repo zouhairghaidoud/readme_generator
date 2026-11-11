@@ -141,7 +141,7 @@ The preview and generated Markdown reference community-run image services:
 - [GitHub Readme Activity Graph](https://github.com/Ashutosh00710/github-readme-activity-graph) — contribution graph
 - [Komarev Profile Views](https://github.com/antonkomarev/github-profile-views-counter) — visitor counter
 
-These are third-party services and can occasionally rate-limit or return errors. Your README is still valid; the cards simply render once the services respond.
+These are third-party services and can occasionally rate-limit or return errors. Your README is still valid; the cards simply render once the services respond. In the live preview, a card that fails to load is replaced by a small **service unavailable** placeholder instead of a broken-image icon — the generated Markdown keeps the original URL.
 
 ## Tech notes
 
