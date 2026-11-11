@@ -52,7 +52,7 @@
 
   /* Pre-filled profile. Shown on first load and after importing nothing. */
   const PROFILE = {
-    version: 3,
+    version: 4,
     personal: {
       name: 'Zouhair GHAIDOUD',
       role: 'Web Developer',
@@ -74,11 +74,11 @@
       email: 'zouhairghaidoud185@gmail.com',
     },
     tech: {
-      languages: ['javascript', 'php', 'html5', 'css3', 'dart'],
+      languages: ['javascript', 'php', 'html5', 'css3', 'dart', 'uml'],
       frameworks: ['laravel', 'inertia', 'vue', 'tailwindcss', 'bootstrap', 'flutter', 'chartjs'],
       databases: ['mysql', 'postgresql', 'sqlite'],
       devops: [],
-      tools: ['git', 'postman'],
+      tools: ['git', 'vscode', 'gemini', 'postman'],
       custom: [],
     },
     widgets: {
@@ -99,7 +99,7 @@
 
   function emptyState() {
     return {
-      version: 3,
+      version: 4,
       personal: {
         name: '',
         role: '',
@@ -228,6 +228,22 @@
         frameworks.splice(laravel === -1 ? frameworks.length : laravel + 1, 0, 'inertia');
       }
       state.tech.frameworks = frameworks;
+    }
+    if (fromVersion < 4) {
+      const languages = Array.isArray(state.tech.languages) ? state.tech.languages : [];
+      if (!languages.includes('uml')) languages.push('uml');
+      state.tech.languages = languages;
+
+      const tools = Array.isArray(state.tech.tools) ? state.tech.tools : [];
+      if (!tools.includes('vscode')) {
+        const git = tools.indexOf('git');
+        tools.splice(git === -1 ? tools.length : git + 1, 0, 'vscode');
+      }
+      if (!tools.includes('gemini')) {
+        const vscode = tools.indexOf('vscode');
+        tools.splice(vscode === -1 ? tools.length : vscode + 1, 0, 'gemini');
+      }
+      state.tech.tools = tools;
     }
     state.version = PROFILE.version;
     return state;
