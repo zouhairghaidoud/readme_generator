@@ -1113,6 +1113,29 @@ html:not(.dark) .markdown-body {
   display: inline-block;
 }
 
+/* Shown when an external badge/widget image fails to load */
+.md-img-fallback {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.2rem 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px dashed var(--md-border);
+  border-radius: 0.55rem;
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--md-quote);
+  font-size: 0.78rem;
+  line-height: 1.25;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.md-img-fallback::before {
+  content: "⚠";
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
 .markdown-body p[align="center"] img {
   margin: 2px 1px;
 }

@@ -26,6 +26,30 @@
     return `${(bytes / 1024).toFixed(1)} KB`;
   }
 
+  /* External widget hosts go down now and then. Swap a failed image for a
+     readable placeholder instead of leaving a broken-image icon in the preview.
+     The generated Markdown keeps the original URL, so it recovers automatically. */
+  function markBrokenImage(img) {
+    if (!img || !img.isConnected || img.dataset.rfBroken === '1') return;
+    img.dataset.rfBroken = '1';
+    const alt = String(img.getAttribute('alt') || 'External image').trim() || 'External image';
+    const note = document.createElement('span');
+    note.className = 'md-img-fallback';
+    note.setAttribute('role', 'img');
+    note.setAttribute('aria-label', `${alt} — external service unavailable`);
+    note.textContent = `${alt} — service unavailable`;
+    img.replaceWith(note);
+  }
+
+  function watchImages(root) {
+    root.querySelectorAll('img').forEach((img) => {
+      if (img.dataset.rfWatched === '1') return;
+      img.dataset.rfWatched = '1';
+      img.addEventListener('error', () => markBrokenImage(img), { once: true });
+      if (img.complete && img.naturalWidth === 0) markBrokenImage(img);
+    });
+  }
+
   function renderSafe(markdown) {
     if (!global.marked) {
       return `<pre class="whitespace-pre-wrap break-words text-xs leading-relaxed text-slate-300">${RF.ui.escapeHtml(
@@ -84,6 +108,7 @@
         img.loading = 'lazy';
         img.decoding = 'async';
       });
+      watchImages(els.article);
     }
 
     const widgets = state.widgets || {};
