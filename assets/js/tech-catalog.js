@@ -47,6 +47,7 @@
         { id: 'svelte', label: 'Svelte', color: 'FF3E00', logo: 'svelte' },
         { id: 'astro', label: 'Astro', color: 'BC52EE', logo: 'astro' },
         { id: 'laravel', label: 'Laravel', color: 'FF2D20', logo: 'laravel' },
+        { id: 'inertia', label: 'Inertia.js', color: '9553E9', logo: 'inertia' },
         { id: 'symfony', label: 'Symfony', color: '000000', logo: 'symfony' },
         { id: 'django', label: 'Django', color: '092E20', logo: 'django' },
         { id: 'flask', label: 'Flask', color: '000000', logo: 'flask' },

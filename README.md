@@ -15,7 +15,7 @@ No account, no backend, no build step. Everything runs in your browser.
 
 - **Live dual view** — sanitized GitHub-style preview and raw Markdown, side by side with your form on desktop.
 - **Guided form** — collapsible sections for personal details, tech stack, social links, and analytics widgets.
-- **138 tech badges** — curated catalogue across languages, frameworks, databases, DevOps/cloud, and tools, plus unlimited custom Shields.io badges.
+- **139 tech badges** — curated catalogue across languages, frameworks, databases, DevOps/cloud, and tools, plus unlimited custom Shields.io badges.
 - **Social badges** — GitHub, LinkedIn, X/Twitter, portfolio, Dev.to, Medium, Hashnode, and email, with automatic handle-to-URL normalization.
 - **GitHub widgets** — stats, streak, top languages, profile views, trophies, and contribution activity graph.
 - **AI bio generator** — three distinct drafts (Professional, Creative, Concise) through any OpenAI-compatible API, with an offline template fallback.

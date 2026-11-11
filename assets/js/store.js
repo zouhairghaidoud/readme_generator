@@ -52,7 +52,7 @@
 
   /* Pre-filled profile. Shown on first load and after importing nothing. */
   const PROFILE = {
-    version: 2,
+    version: 3,
     personal: {
       name: 'Zouhair GHAIDOUD',
       role: 'Web Developer',
@@ -75,7 +75,7 @@
     },
     tech: {
       languages: ['javascript', 'php', 'html5', 'css3', 'dart'],
-      frameworks: ['laravel', 'vue', 'tailwindcss', 'bootstrap', 'flutter', 'chartjs'],
+      frameworks: ['laravel', 'inertia', 'vue', 'tailwindcss', 'bootstrap', 'flutter', 'chartjs'],
       databases: ['mysql', 'postgresql', 'sqlite'],
       devops: [],
       tools: ['git', 'postman'],
@@ -99,7 +99,7 @@
 
   function emptyState() {
     return {
-      version: 2,
+      version: 3,
       personal: {
         name: '',
         role: '',
@@ -219,12 +219,27 @@
     return state;
   }
 
+  /* Keep saved profiles in sync with catalogue/default changes. */
+  function migrate(state, fromVersion) {
+    if (fromVersion < 3) {
+      const frameworks = Array.isArray(state.tech.frameworks) ? state.tech.frameworks : [];
+      if (!frameworks.includes('inertia')) {
+        const laravel = frameworks.indexOf('laravel');
+        frameworks.splice(laravel === -1 ? frameworks.length : laravel + 1, 0, 'inertia');
+      }
+      state.tech.frameworks = frameworks;
+    }
+    state.version = PROFILE.version;
+    return state;
+  }
+
   function load() {
     try {
       const raw = global.localStorage.getItem(STORAGE_KEY);
       if (!raw) return defaults();
       const parsed = JSON.parse(raw);
-      return sanitize(deepMerge(defaults(), parsed));
+      const version = Number(parsed.version) || 1;
+      return migrate(sanitize(deepMerge(defaults(), parsed)), version);
     } catch {
       return defaults();
     }
